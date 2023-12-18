@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>cfx_manager</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+
+
+<h2>Examples</h2>
+<ul class="nowrap">
+  <li><strong>audio_events.lua</strong></li>
+  <li><a href="../examples/dispatcher.lua.html">dispatcher.lua</a></li>
+  <li><strong>audio_events.lua</strong></li>
+  <li><a href="../examples/base_config.lua.html">base_config.lua</a></li>
+  <li><a href="../examples/dispatcher.lua.html">dispatcher.lua</a></li>
+  <li><a href="../examples/fxmanifest.lua.html">fxmanifest.lua</a></li>
+  <li><a href="../examples/commands.lua.html">commands.lua</a></li>
+  <li><a href="../examples/manager.lua.html">manager.lua</a></li>
+  <li><a href="../examples/version.lua.html">version.lua</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+    <h2>audio_events.lua</h2>
+<pre>
+<span class="comment">--[[
+    @description: Audio flags can control what ambient sounds are played.
+    @documentation: https://docs.fivem.net/natives/?_0xB9EFD5C25018725A.
+
+    @state: on or off (default: on) -- on will disable all of the default events, off will allow all of the default events to be triggered.
+    @events: table of events to disable (default: nil) -- nil will use the default events, true will disable, false will enable.
+       @SwitchWheelAudio: nil -- true will disable, false will enable. (default: nil) -- nil will use the default of true.
+       @AllowAmbientSpeech: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+       @AllowCutsceneOverScreenFade: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+       @AllowForceRadioAfterRetune: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+       @AllowPainAndAmbientSpeechToPlayDuringCutscene: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+       @AllowPlayerAIOnMission: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+       @AllowPoliceScannerWhenPlayerHasNoControl: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+       @AllowRadioDuringSwitch: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+       @AllowRadioOverScreenFade: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+       @AllowScoreAndRadio: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+       @AllowScriptedSpeechInSlowMo: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+       @AvoidMissionCompleteDelay: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+       @DisableAbortConversationForDeathAndInjury: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+       @DisableAbortConversationForRagdoll: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+       @DisableBarks: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+       @DisableFlightMusic: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+       @DisableReplayScriptStreamRecording: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+       @EnableHeadsetBeep: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+       @ForceConversationInterrupt: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+       @ForceSeamlessRadioSwitch: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+       @ForceSniperAudio: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+       @FrontendRadioDisabled: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+       @HoldMissionCompleteWhenPrepared: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+       @IsDirectorModeActive: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+       @IsPlayerOnMissionForSpeech: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+       @ListenerReverbDisabled: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+       @LoadMPData: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+       @MobileRadioInGame: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+       @OnlyAllowScriptTriggerPoliceScanner: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+       @PlayMenuMusic: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+       @PoliceScannerDisabled: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+       @ScriptedConvListenerMaySpeak: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+       @SpeechDucksScore: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+       @SuppressPlayerScubaBreathing: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+       @WantedMusicDisabled: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+       @WantedMusicOnMission: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+]]</span>
+
+AUDIO = {
+    state = <span class="string">'on'</span>,
+    events = {
+        SwitchWheelAudio = <span class="keyword">nil</span>, <span class="comment">-- Audio flag which will allow you to hear the sound when switching weapons.
+</span>        AllowAmbientSpeech = <span class="keyword">nil</span>, <span class="comment">-- Audio flag which will allow you to hear ambient speech.
+</span>        AllowCutsceneOverScreenFade = <span class="keyword">nil</span>, <span class="comment">-- Audio flag which will allow you to hear cutscene audio over the screen fade.
+</span>        AllowForceRadioAfterRetune = <span class="keyword">nil</span>, <span class="comment">-- Audio flag which will allow you to hear the radio after retuning.
+</span>        AllowPainAndAmbientSpeechToPlayDuringCutscene = <span class="keyword">nil</span>, <span class="comment">-- Audio flag which will allow you to hear pain and ambient speech during cutscenes.
+</span>        AllowPlayerAIOnMission = <span class="keyword">nil</span>, <span class="comment">-- Audio flag which will allow you to hear player AI on missions.
+</span>        AllowPoliceScannerWhenPlayerHasNoControl = <span class="keyword">nil</span>, <span class="comment">-- Audio flag which will allow you to hear the police scanner when the player has no control.
+</span>        AllowRadioDuringSwitch = <span class="keyword">nil</span>, <span class="comment">-- Audio flag which will allow you to hear the radio during a switch.
+</span>        AllowRadioOverScreenFade = <span class="keyword">nil</span>, <span class="comment">-- Audio flag which will allow you to hear the radio over the screen fade.
+</span>        AllowScoreAndRadio = <span class="keyword">nil</span>, <span class="comment">-- Audio flag which will allow you to hear the score and radio.
+</span>        AllowScriptedSpeechInSlowMo = <span class="keyword">nil</span>, <span class="comment">-- Audio flag which will allow you to hear scripted speech in slow motion.
+</span>        AvoidMissionCompleteDelay = <span class="keyword">nil</span>, <span class="comment">-- Audio flag which will allow you to avoid the mission complete delay.
+</span>        DisableAbortConversationForDeathAndInjury = <span class="keyword">nil</span>, <span class="comment">-- Audio flag which will allow you to disable the abort conversation for death and injury.
+</span>        DisableAbortConversationForRagdoll = <span class="keyword">nil</span>, <span class="comment">-- Audio flag which will allow you to disable the abort conversation for ragdoll.
+</span>        DisableBarks = <span class="keyword">nil</span>, <span class="comment">-- Audio flag which will allow you to disable barks.
+</span>        DisableFlightMusic = <span class="keyword">nil</span>, <span class="comment">-- Audio flag which will allow you to disable flight music.
+</span>        DisableReplayScriptStreamRecording = <span class="keyword">nil</span>, <span class="comment">-- Audio flag which will allow you to disable the replay script stream recording.
+</span>        EnableHeadsetBeep = <span class="keyword">nil</span>, <span class="comment">-- Audio flag which will allow you to enable the headset beep.
+</span>        ForceConversationInterrupt = <span class="keyword">nil</span>, <span class="comment">-- Audio flag which will allow you to force a conversation interrupt.
+</span>        ForceSeamlessRadioSwitch = <span class="keyword">nil</span>, <span class="comment">-- Audio flag which will allow you to force a seamless radio switch.
+</span>        ForceSniperAudio = <span class="keyword">nil</span>, <span class="comment">-- Audio flag which will allow you to force sniper audio.
+</span>        FrontendRadioDisabled = <span class="keyword">nil</span>, <span class="comment">-- Audio flag which will allow you to disable the frontend radio.
+</span>        HoldMissionCompleteWhenPrepared = <span class="keyword">nil</span>, <span class="comment">-- Audio flag which will allow you to hold the mission complete when prepared.
+</span>        IsDirectorModeActive = <span class="keyword">nil</span>, <span class="comment">-- Audio flag which will allow you to play speech infinitely without any pauses like in Director Mode.
+</span>        IsPlayerOnMissionForSpeech = <span class="keyword">nil</span>, <span class="comment">-- Audio flag which will allow you to play speech infinitely without any pauses like in Director Mode.
+</span>        ListenerReverbDisabled = <span class="keyword">nil</span>, <span class="comment">-- Audio flag which will allow you to disable the listener reverb.
+</span>        LoadMPData = <span class="keyword">nil</span>, <span class="comment">-- Audio flag which will allow you to load MP data.
+</span>        MobileRadioInGame = <span class="keyword">nil</span>,  <span class="comment">-- Audio flag which will allow you to enable the mobile radio in game.
+</span>        OnlyAllowScriptTriggerPoliceScanner = <span class="keyword">nil</span>,  <span class="comment">-- Audio flag which will allow you to only allow the script to trigger the police scanner.
+</span>        PlayMenuMusic = <span class="keyword">nil</span>, <span class="comment">-- Audio flag which will allow you to play menu music.
+</span>        PoliceScannerDisabled = <span class="keyword">nil</span>, <span class="comment">-- Audio flag which will allow you to disable the police scanner.
+</span>        ScriptedConvListenerMaySpeak = <span class="keyword">nil</span>, <span class="comment">-- Audio flag which will allow you to allow the scripted conversation listener to speak.
+</span>        SpeechDucksScore = <span class="keyword">nil</span>, <span class="comment">-- Audio flag which will allow you to duck the score.
+</span>        SuppressPlayerScubaBreathing = <span class="keyword">nil</span>, <span class="comment">-- Audio flag which will allow you to suppress the player scuba breathing.
+</span>        WantedMusicDisabled = <span class="keyword">nil</span>, <span class="comment">-- Audio flag which will allow you to disable the wanted music.
+</span>        WantedMusicOnMission = <span class="keyword">nil</span>, <span class="comment">-- Audio flag which will allow you to enable the wanted music on mission.
+</span>    }
+}</pre>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2023-12-18 07:12:02 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

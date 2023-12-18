@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>cfx_manager</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+
+
+<h2>Examples</h2>
+<ul class="nowrap">
+  <li><a href="../examples/audio_events.lua.html">audio_events.lua</a></li>
+  <li><strong>dispatcher.lua</strong></li>
+  <li><a href="../examples/audio_events.lua.html">audio_events.lua</a></li>
+  <li><a href="../examples/base_config.lua.html">base_config.lua</a></li>
+  <li><strong>dispatcher.lua</strong></li>
+  <li><a href="../examples/fxmanifest.lua.html">fxmanifest.lua</a></li>
+  <li><a href="../examples/commands.lua.html">commands.lua</a></li>
+  <li><a href="../examples/manager.lua.html">manager.lua</a></li>
+  <li><a href="../examples/version.lua.html">version.lua</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+    <h2>dispatcher.lua</h2>
+<pre>
+<span class="comment">--[[
+	CUSTOM DISPATCHER CONFIGURATION
+
+	NOTE: setting the state to "off" will allow all of the default events to be triggered.
+	Setting the state to "on" will disable all of the default events, and you can pick and choose
+	which ones you want to disable by setting their values to true or false.
+
+	@state: on or off (default: on) -- on will disable all of the default events, off will allow all of the default events to be triggered.
+
+	@events: a table of events to disable (default: nil) -- nil will use the default events, true will disable, false will enable.
+	   @Invalid: nil -- true will disable, false will enable. (default: nil) -- nil will use the default of true.
+	   @PoliceCar: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+	   @PoliceHeli: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+	   @FireTruck: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+	   @SwatSquad: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+	   @Medics: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+	   @PoliceBike: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+	   @PoliceTransport: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+	   @PoliceRoadBlock: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+	   @PoliceCarWaitPulledOver: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+	   @PoliceCarWaitCruising: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+	   @GangViolence: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+	   @SwatHeli: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+	   @PoliceBoat: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+	   @ArmyResponse: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+	   @BikerBackup: nil -- true will disable, false will enable. (default: nil) -- nil will use the default true.
+]]</span>
+
+DISPATCHER = {
+	state = <span class="string">'on'</span>,
+    events = {
+		Invalid = <span class="keyword">nil</span>, <span class="comment">-- Event which will be triggered when an invalid event is called.
+</span>	    PoliceCar = <span class="keyword">nil</span>, <span class="comment">-- Event which will be triggered when a ai/npc police car is called.
+</span>	    PoliceHeli = <span class="keyword">nil</span>, <span class="comment">-- Event which will be triggered when a ai/npc police helicopter is called.
+</span>	    FireTruck = <span class="keyword">nil</span>, <span class="comment">-- Event which will be triggered when a ai/npc fire truck is called.
+</span>	    SwatSquad = <span class="keyword">nil</span>, <span class="comment">-- Event which will be triggered when a ai/npc swat squad is called.
+</span>	    Medics = <span class="keyword">nil</span>, <span class="comment">-- Event which will be triggered when ai/npc medics are called.
+</span>	    PoliceBike = <span class="keyword">nil</span>, <span class="comment">-- Event which will be triggered when a ai/npc police bike is called.
+</span> 	    PoliceTransport = <span class="keyword">nil</span>, <span class="comment">-- Event which will be triggered when a ai/npc police transport is called.
+</span>	    PoliceRoadBlock = <span class="keyword">nil</span>, <span class="comment">-- Event which will be triggered when a ai/npc police road block is called.
+</span>	    PoliceCarWaitPulledOver = <span class="keyword">nil</span>, <span class="comment">-- Event which will be triggered when a ai/npc police car is called to pull someone over.
+</span>	    PoliceCarWaitCruising = <span class="keyword">nil</span>, <span class="comment">-- Event which will be triggered when a ai/npc police car is called to cruise.
+</span>	    GangViolence = <span class="keyword">nil</span>, <span class="comment">-- Event which will be triggered when gang violence is called in.
+</span>	    SwatHeli = <span class="keyword">nil</span>, <span class="comment">-- Event which will be triggered when a ai/npc swat helicopter is called.
+</span>	    PoliceBoat = <span class="keyword">nil</span>, <span class="comment">-- Event which will be triggered when a ai/npc police boat is called.
+</span>	    ArmyResponse = <span class="keyword">nil</span>, <span class="comment">-- Event which will be triggered when ai/npc controlled army is called.
+</span>	    BikerBackup = <span class="keyword">nil</span> <span class="comment">-- Event which will be triggered when ai/npc biker backup is called.
+</span>	}
+}</pre>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2023-12-18 07:12:02 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

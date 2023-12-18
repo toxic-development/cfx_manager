@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>cfx_manager</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+
+
+<h2>Examples</h2>
+<ul class="nowrap">
+  <li><a href="../examples/audio_events.lua.html">audio_events.lua</a></li>
+  <li><a href="../examples/dispatcher.lua.html">dispatcher.lua</a></li>
+  <li><a href="../examples/audio_events.lua.html">audio_events.lua</a></li>
+  <li><a href="../examples/base_config.lua.html">base_config.lua</a></li>
+  <li><a href="../examples/dispatcher.lua.html">dispatcher.lua</a></li>
+  <li><a href="../examples/fxmanifest.lua.html">fxmanifest.lua</a></li>
+  <li><a href="../examples/commands.lua.html">commands.lua</a></li>
+  <li><a href="../examples/manager.lua.html">manager.lua</a></li>
+  <li><strong>version.lua</strong></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+    <h2>version.lua</h2>
+<pre>
+<span class="comment">--[[
+    CHECK FOR UPDATES IF ENABLED IN THE CONFIG
+    ==========================================
+    - This file checks for updates from the github repo.
+    - If an update is available, it will print it in the console.
+    - If you want to disable this, set 'updates' to false in the config.lua file.
+    - If you want to enable this, set 'updates' to true in the config.lua file.
+    - If you want to check for updates manually, run the command '/checkupdates' in the server console.
+
+    NOTE:
+    - Disabling these checks is not recommended.
+    - Editing the file is not recommended
+]]</span>
+
+<span class="keyword">if</span> CONFIGURATION.updates <span class="keyword">then</span>
+
+    <span class="global">print</span>(<span class="string">'| ================================== |'</span>)
+    <span class="global">print</span>(<span class="string">'| CFX Manager - Checking for updates |'</span>)
+    <span class="global">print</span>(<span class="string">'| ================================== |'</span>)
+
+    Citizen.CreateThred(<span class="keyword">function</span>()
+
+        <span class="keyword">local</span> version = GetResourceMetadata(GetCurrentResourceName(), <span class="string">'version'</span>, <span class="number">0</span>)
+
+        PerformHttpRequest(<span class="string">'https://api.github.com/repos/toxic-development/cfx_manager/releases/latest'</span>, <span class="keyword">function</span>(err, text, headers)
+            <span class="keyword">local</span> data = json.decode(text)
+
+            <span class="keyword">if</span> data.tag_name ~= version <span class="keyword">then</span>
+                <span class="global">print</span>(<span class="string">'| ==================================== |'</span>)
+                <span class="global">print</span>(<span class="string">'| CFX Manager - Update available       |'</span>)
+                <span class="global">print</span>(<span class="string">'| ==================================== |'</span>)
+                <span class="global">print</span>(<span class="string">'| Current version: '</span>..version..<span class="string">'       |'</span>)
+                <span class="global">print</span>(<span class="string">'| Latest version: '</span>..data.tag_name..<span class="string">'  |'</span>)
+                <span class="global">print</span>(<span class="string">'| ==================================== |'</span>)
+                <span class="global">print</span>(<span class="string">'| Download: '</span>..data.html_url..<span class="string">'        |'</span>)
+                <span class="global">print</span>(<span class="string">'| ==================================== |'</span>)
+            <span class="keyword">else</span>
+                <span class="global">print</span>(<span class="string">'| ==================================== |'</span>)
+                <span class="global">print</span>(<span class="string">'| CFX Manager - No updates available   |'</span>)
+                <span class="global">print</span>(<span class="string">'| ===================================  |'</span>)
+                <span class="global">print</span>(<span class="string">'| Current version: '</span>..version..<span class="string">'       |'</span>)
+                <span class="global">print</span>(<span class="string">'| Latest version: '</span>..data.tag_name..<span class="string">'  |'</span>)
+                <span class="global">print</span>(<span class="string">'| ==================================== |'</span>)
+            <span class="keyword">end</span>
+        <span class="keyword">end</span>, <span class="string">'GET'</span>, <span class="string">''</span>, { [<span class="string">'Content-Type'</span>] = <span class="string">'application/json'</span> })
+    <span class="keyword">end</span>)
+<span class="keyword">end</span></pre>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2023-12-18 07:12:02 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
