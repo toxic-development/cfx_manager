@@ -1,6 +1,6 @@
 project = 'cfx_manager'
 description = 'A simple script to disable the AI dispatcher and other unwanted server events.'
-examples = {}
+examples = {'manager'}
 style = true
 
 custom_see_handler('^(https?://.*)$', function(url)
