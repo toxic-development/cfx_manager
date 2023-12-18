@@ -1,4 +1,4 @@
 .PHONY: docs
 
 docs:
-	ldoc -d $@ .
+	ldoc -d $@ ./manager
